@@ -3,7 +3,10 @@ import webpack from 'webpack'
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const config = {
-  entry: './src/client/index.js',
+  entry: {
+    app: './src/client/index.js',
+    vendor: './src/vendor.js'
+  },
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
@@ -18,8 +21,7 @@ const config = {
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: module => module.context && module.context.includes('node_modules')
+      name: 'vendor'   
     }),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static'
