@@ -13,7 +13,8 @@ const Container = (view) => (
     <body>
       <div id="app">
         <div dangerouslySetInnerHTML={{ __html: view }} />
-        <script src="dist/bundle.js" />
+        <script src="dist/common.bundle.js" />
+        <script src="dist/main.bundle.js" />
       </div>
     </body>
   </html>

@@ -8,8 +8,10 @@ import buildStore from '../store'
 
 const history = createHistory()
 
+const store = buildStore(history, window.__initialState__)
+
 const App = () => (
-  <Provider store={buildStore(history, window.__initialState__)}>
+  <Provider store={store}>
     <ConnectedRouter history={history}>
       <Routes />
     </ConnectedRouter>
