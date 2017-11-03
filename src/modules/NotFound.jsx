@@ -1,13 +1,8 @@
 import React from 'react'
 
-const NotFound = ({ status }) => (
-  <Route
-    render={
-      ({ staticContext }) => {
-        if (staticContext) staticContext.status = status
-        return <div>This route has not been found Soz!</div>
-      }}
-  />
+
+const NotFound = () => (
+  <h2>Route has not been found</h2>
 )
 
 export default NotFound

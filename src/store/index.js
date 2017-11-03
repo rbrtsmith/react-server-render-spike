@@ -1,26 +1,21 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
+import { routerMiddleware } from 'react-router-redux'
 
-const test = (state = false) => state
-const hello = (state = 'test') => state
+import rootReducer from '../store/reducers'
 
+const buildStore = (history, initialState) => {
+  const middleware = [
+    routerMiddleware(history)
+  ]
 
-const rootReducer = combineReducers({
-  test,
-  hello
-})
+  const composeEnhancers =
+    typeof (window) !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
-const middleware = []
+  const enhancer = composeEnhancers(
+    applyMiddleware(...middleware)
+  )
 
-
-
-const composeEnhancers =
-  typeof (window) !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-
-const enhancer = composeEnhancers(
-  applyMiddleware(...middleware)
-)
-
-const buildStore = initialState =>  
-  createStore(rootReducer, initialState, enhancer)
+  return createStore(rootReducer, initialState, enhancer)
+}
 
 export default buildStore

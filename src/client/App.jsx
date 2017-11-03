@@ -1,14 +1,18 @@
 import React from 'react'
 import { Provider } from 'react-redux'
+import { ConnectedRouter } from 'react-router-redux'
+import createHistory from 'history/createBrowserHistory'
 
-import Routes from './Routes'
+import Routes from '../modules/Routes'
 import buildStore from '../store'
 
-const store = buildStore(window.__initialState__)
+const history = createHistory()
 
 const App = () => (
-  <Provider store={store}>
-    <Routes />
+  <Provider store={buildStore(history, window.__initialState__)}>
+    <ConnectedRouter history={history}>
+      <Routes />
+    </ConnectedRouter>
   </Provider>
 )
 

@@ -6,7 +6,6 @@ import serve from 'koa-static'
 import App from './App'
 import Container from './renderContainer'
 
-
 const app = new koa()
 const PORT = 3000
 
