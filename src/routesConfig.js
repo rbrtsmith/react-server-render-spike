@@ -1,5 +1,6 @@
 import Home from './modules/Home'
 import Article from './modules/Article'
+import Books from './modules/Books'
 
 const config = [
   {
@@ -11,6 +12,11 @@ const config = [
     key: '1',
     path: '/article',
     component: Article,
+    exact: true
+  }, {
+    key: '2',
+    path: '/books',
+    component: Books,
     exact: true
   }
 ]
